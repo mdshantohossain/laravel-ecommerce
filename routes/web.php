@@ -1,22 +1,28 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\EcommerceController;
-use App\Http\Controllers\Website\AuthController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Website\BlogController;
 use App\Http\Controllers\Website\CartController;
 use App\Http\Controllers\Website\CheckoutController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Website\WishlistController;
-use App\Http\Controllers\Website\BlogController;
 use App\Http\Controllers\Website\ProductController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Website\WishlistController;
 
-// email controllers
-use App\Http\Controllers\Admin\DashboardController;
+// admin routes
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UnitController;
-use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\Admin\ProductController as AdminProductController;
+
+// auth routes
+use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+
 
 
 Route::get('/', [EcommerceController::class, 'index'])->name('home');
@@ -46,6 +52,19 @@ Route::post('/login', [AuthController::class, 'signIn'])->name('login.request');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'signUp'])->name('register.request');
 Route::get('/verify-email/{token}', [AuthController::class, 'verify'])->name('verify.email');
+
+// forgot password route
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot.password');
+Route::get('/reset-password', [ForgotPasswordController::class, 'reset'])->name('reset.password');
+
+// socialite route
+
+Route::get('/google/redirect', [SocialiteController::class, 'googleRedirect'])->name('google.redirect');
+Route::get('/google/callback', [SocialiteController::class, 'googleCallback'])->name('google.callback');
+
+Route::get('/facebook/redirect', [SocialiteController::class, 'facebookRedirect'])->name('facebook.redirect');
+Route::get('/facebook/callback', [SocialiteController::class, 'facebookCallback'])->name('facebook.callback');
 
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');

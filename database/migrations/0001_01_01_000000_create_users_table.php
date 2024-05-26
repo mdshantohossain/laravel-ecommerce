@@ -23,6 +23,10 @@ return new class extends Migration
             $table->text('billing_address')->nullable();
             $table->text('shipping_address')->nullable();
             $table->tinyInteger('status');
+            $table->string('google_id')->nullable();
+            $table->string('google_image')->nullable();
+            $table->string('facebook_id')->nullable();
+            $table->string('facebook_image')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

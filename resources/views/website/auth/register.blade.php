@@ -67,8 +67,8 @@
                                             <span> or</span>
                                         </div>
                                         <ul class="btn-login list_none text-center mb-15">
-                                            <li><a href="#" class="btn btn-facebook hover-up mb-lg-0 mb-sm-4">Login With Facebook</a></li>
-                                            <li><a href="#" class="btn btn-google hover-up">Login With Google</a></li>
+                                            <li><a href="{{ route('facebook.redirect') }}" class="btn btn-facebook hover-up mb-lg-0 mb-sm-4">Login With Facebook</a></li>
+                                            <li><a href="{{ route('google.redirect') }}" class="btn btn-google hover-up">Login With Google</a></li>
                                         </ul>
                                         <div class="text-muted text-center">Already have an account? <a href="{{ route('login') }}">Sign in now</a></div>
                                     </div>
