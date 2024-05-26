@@ -51,6 +51,9 @@
                                                     <span class="text-danger">{{ session('password') }}</span>
                                                 @endif
                                             </div>
+                                            <div class="">
+                                                <a href="{{ route('forgot.password') }}" class="float-end">Forget password?</a>
+                                            </div>
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-fill-out btn-block hover-up">Login</button>
                                             </div>

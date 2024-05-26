@@ -10,12 +10,12 @@ class SubCategoryController extends Controller
 {
     public function index()
     {
-        return view('email.sub-category.index');
+        return view('admin.sub-category.index');
     }
 
     public function create()
     {
-        return view('email.sub-category.create');
+        return view('admin.sub-category.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -25,7 +25,7 @@ class SubCategoryController extends Controller
 
     public function edit(int $id)
     {
-        return view('email.sub-category.edit');
+        return view('admin.sub-category.edit');
     }
 
     public function update(Request $request, $id): RedirectResponse
