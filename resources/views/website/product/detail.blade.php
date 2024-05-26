@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
-                                            <form action="{{ route('card.add') }}" method="POST">
+                                            <form action="{{ route('card.add', $product->id) }}" method="POST">
                                                 @csrf
                                                 <div class="d-flex">
                                                     <div class="col-2">
