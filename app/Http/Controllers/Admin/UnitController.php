@@ -10,12 +10,12 @@ class UnitController extends Controller
 {
     public function index()
     {
-        return view('email.unit.index');
+        return view('admin.unit.index');
     }
 
     public function create()
     {
-        return view('email.unit.create');
+        return view('admin.unit.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -25,7 +25,7 @@ class UnitController extends Controller
 
     public function edit(int $id)
     {
-        return view('email.unit.edit');
+        return view('admin.unit.edit');
     }
 
     public function update(Request $request, $id): RedirectResponse

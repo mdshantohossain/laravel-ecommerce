@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\EcommerceController;
-use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\website\EcommerceController;
 use App\Http\Controllers\Website\BlogController;
 use App\Http\Controllers\Website\CartController;
 use App\Http\Controllers\Website\CheckoutController;
@@ -17,6 +16,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UnitController;
+use App\Http\Controllers\Admin\OrderController;
 
 // auth routes
 use App\Http\Controllers\Auth\SocialiteController;
@@ -56,13 +56,15 @@ Route::get('/verify-email/{token}', [AuthController::class, 'verify'])->name('ve
 // forgot password route
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot.password');
-Route::get('/reset-password', [ForgotPasswordController::class, 'reset'])->name('reset.password');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'forgetPasswordRequest'])->name('forgot.password.request');
+Route::get('/forgot-password/success', [ForgotPasswordController::class, 'forgetPasswordSuccess'])->name('forgot.password.success');
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'resetPassword'])->name('reset.password');
+Route::post('/reset-password-request/{token}', [ForgotPasswordController::class, 'passwordResetRequest'])->name('reset.password.request');
 
 // socialite route
 
 Route::get('/google/redirect', [SocialiteController::class, 'googleRedirect'])->name('google.redirect');
 Route::get('/google/callback', [SocialiteController::class, 'googleCallback'])->name('google.callback');
-
 Route::get('/facebook/redirect', [SocialiteController::class, 'facebookRedirect'])->name('facebook.redirect');
 Route::get('/facebook/callback', [SocialiteController::class, 'facebookCallback'])->name('facebook.callback');
 

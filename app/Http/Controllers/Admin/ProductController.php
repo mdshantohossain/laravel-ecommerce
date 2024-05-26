@@ -10,12 +10,12 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('email.product.index');
+        return view('admin.product.index');
     }
 
     public function create()
     {
-        return view('email.product.create');
+        return view('admin.product.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -25,7 +25,7 @@ class ProductController extends Controller
 
     public function edit(int $id)
     {
-        return view('email.product.edit');
+        return view('admin.product.edit');
     }
 
     public function update(Request $request, $id): RedirectResponse

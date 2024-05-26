@@ -11,12 +11,12 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('email.category.index');
+        return view('admin.category.index');
     }
 
     public function create()
     {
-        return view('email.category.create');
+        return view('admin.category.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -26,7 +26,7 @@ class CategoryController extends Controller
 
     public function edit(int $id)
     {
-        return view('email.category.edit');
+        return view('admin.category.edit');
     }
 
     public function update(Request $request, $id): RedirectResponse
