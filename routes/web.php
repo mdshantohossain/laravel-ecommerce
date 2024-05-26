@@ -10,7 +10,7 @@ use App\Http\Controllers\Website\BlogController;
 use App\Http\Controllers\Website\ProductController;
 use App\Http\Controllers\OrderController;
 
-// admin controllers
+// email controllers
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -40,8 +40,12 @@ Route::get('/cart/remove-item/{id}', [CartController::class, 'remove'])->name('c
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/order-place', [OrderController::class, 'index'])->name('order.place');
 
+// auth route
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'signIn'])->name('login.request');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'signUp'])->name('register.request');
+Route::get('/verify-email/{token}', [AuthController::class, 'verify'])->name('verify.email');
 
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');

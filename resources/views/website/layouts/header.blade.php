@@ -17,9 +17,9 @@
                     <div class="text-center">
                         <div id="news-flash" class="d-inline-block">
                             <ul>
-                                <li>Get great devices up to 50% off <a href="shop-grid-right.html">View details</a></li>
+                                <li>Get great devices up to 50% off <a href="javascript: void(0)">View details</a></li>
                                 <li>Supper Value Deals - Save more with coupons</li>
-                                <li>Trendy 25silver jewelry, save up 35% off today <a href="shop-grid-right.html">Shop
+                                <li>Trendy 25silver jewelry, save up 35% off today <a href="javascript: void(0)">Shop
                                         now</a></li>
                             </ul>
                         </div>
@@ -40,18 +40,29 @@
                                                          alt="">Pусский</a></li>
                                 </ul>
                             </li>
-                            <li><i class="fi-rs-user"></i><a href="{{ route('login') }}">Log In / Sign Up</a></li>
+                            @if(empty(Auth::user()))
+                              <li><i class="fi-rs-user"></i><a href="{{ route('login') }}">Log In / Sign Up</a></li>
+                            @else
+                                <li>
+                                    <i class="fa fa-arrow-left"></i>
+                                    <a href="javascript: void(0)" onclick="document.querySelector('#logoutForm').submit();">Logout</a>
+                                    <form action="{{ route('logout') }}"  method="POST" id="logoutForm">
+                                        @csrf
+                                    </form>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="index.html"><img src="{{asset('/')}}website/assets/imgs/theme/logo.svg" alt="logo"></a>
+                    <a href="{{ route('home') }}"><img src="{{asset('/')}}website/assets/imgs/theme/logo.svg" alt="logo"></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
@@ -78,13 +89,13 @@
                                 <a href="{{ route('wishlist') }}">
                                     <img class="svgInject" alt="Evara"
                                          src="{{asset('/')}}website/assets/imgs/theme/icons/icon-heart.svg">
-                                    <span class="pro-count blue">4</span>
+                                    <span class="pro-count blue">{{ count($wishlists) }}</span>
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="{{ route('cart') }}">
                                     <img alt="Evara" src="{{asset('/')}}website/assets/imgs/theme/icons/icon-cart.svg">
-                                    <span class="pro-count blue">2</span>
+                                    <span class="pro-count blue">{{ Cart::count() }}</span>
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>

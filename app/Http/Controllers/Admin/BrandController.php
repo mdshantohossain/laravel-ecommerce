@@ -10,12 +10,12 @@ class BrandController extends Controller
 {
     public function index()
     {
-        return view('admin.brand.index');
+        return view('email.brand.index');
     }
 
     public function create()
     {
-        return view('admin.brand.create');
+        return view('email.brand.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -25,7 +25,7 @@ class BrandController extends Controller
 
     public function edit(int $id)
     {
-        return view('admin.brand.edit');
+        return view('email.brand.edit');
     }
 
     public function update(Request $request, $id): RedirectResponse
