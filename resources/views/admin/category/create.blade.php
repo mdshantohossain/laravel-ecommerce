@@ -4,36 +4,45 @@
 
 @section('body')
     <div class="row">
-        <div class="col-xl-6 mt-5 mx-auto">
+        <div class="col-md-8 mt-5 mx-auto">
             <div class="card">
                 <div class="card-body">
                     <span class="h4 mb-4">Create category</span>
-                    <a href="{{ route('category.index') }}" class="float-end bg-primary text-white py-1 px-2 rounded-2">
+                    <a href="{{ route('category.index') }}" class="float-end bg-primary text-white p-2 rounded-2">
                         <i class="fa fa-arrow-left"></i>
                         Back</a>
                     <div class="mt-4">
-                        <form action="{{ route('category.store') }}" method="POST">
+                        <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="slug" id="slug" />
                             <div class="row mb-3">
-                                <label for="horizontal-firstname-input">Name</label>
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" id="horizontal-firstname-input" placeholder="Enter Your " />
+                                <label for="name">Name<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" id="name" placeholder="Enter category name" />
+                                @error('name')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="row mb-3">
-                                <label for="horizontal-firstname-input">Description</label>
+                                <label for="horizontal-firstname-input">Description<span class="text-danger">*</span></label>
                                 <textarea class="form-control" id="horizontal-firstname-input" name="description" placeholder="Enter category description ">{{ old('description') }}</textarea>
+                                @error('description')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="resume">Image</label>
-                                <input type="file" class="form-control" name="image" id="resume" />
-                                <img src="{{ old('image') }}" alt="" />
+                                <label for="resume">Image<span class="text-danger">*</span></label>
+                                <input type="file" class="form-control" name="image" />
+                                @error('image')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label class="d-block mb-3">Status :</label>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" {{ old('status') == 1 ? 'selected' : '' }} id="inlineRadio1" value="1" />
+                                    <input class="form-check-input" type="radio" name="status" {{ old('status') == 1 ? 'selected' : '' }} id="inlineRadio1" checked value="1" />
                                     <label class="form-check-label" for="inlineRadio1">Active</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -58,3 +67,16 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $(()=> {
+            $('#slug').val($('#name').val().replaceAll(' ', '-'))
+        })
+        $(()=> {
+            $('#name').keyup(function (){
+                $('#slug').val($(this).val().replaceAll(' ', '-'))
+            });
+        })
+    </script>
+@endpush
