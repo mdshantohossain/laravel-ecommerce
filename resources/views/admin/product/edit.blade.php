@@ -1,43 +1,54 @@
 @extends('admin.master')
 
-@section('title', 'Edit ategory')
+@section('title', 'Category Edit')
 
 @section('body')
     <div class="row">
-        <div class="col-xl-6 mt-5 mx-auto">
+        <div class="col-md-8 mt-5 mx-auto">
             <div class="card">
                 <div class="card-body">
-                    <span class="h4 mb-4">Edit category form</span>
-                    <a href="{{ route('category.index') }}" class="float-end bg-primary text-white py-1 px-2 rounded-2">
+                    <span class="h4 mb-4">Edit category</span>
+                    <a href="{{ route('category.index') }}" class="float-end bg-primary text-white p-2 rounded-2">
                         <i class="fa fa-arrow-left"></i>
                         Back</a>
                     <div class="mt-4">
-                        <form action="{{ route('category.update') }}" method="POST">
+                        <form action="{{ route('category.update', $category->slug) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row mb-3">
                                 <label for="horizontal-firstname-input">Name</label>
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" id="horizontal-firstname-input" placeholder="Enter Your " />
+                                <input type="text" class="form-control" name="name" value="{{ $category->name }}" id="horizontal-firstname-input" placeholder="Enter Your " />
+                                @error('name')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="row mb-3">
                                 <label for="horizontal-firstname-input">Description</label>
-                                <textarea class="form-control" id="horizontal-firstname-input" name="description" placeholder="Enter category description ">{{ old('description') }}</textarea>
+                                <textarea class="form-control" id="horizontal-firstname-input" name="description" placeholder="Enter category description ">{{ $category->description }}</textarea>
+                                @error('description')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="resume">Image</label>
-                                <input type="file" class="form-control" name="image" id="resume" />
-                                <img src="{{ old('image') }}" alt="" />
+                                <input type="file" class="form-control" name="image" />
+                                @error('image')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <br>
+                                <img src="{{ asset($category->image) }}" width="150" height="120" alt="" />
                             </div>
 
                             <div class="mb-3">
                                 <label class="d-block mb-3">Status :</label>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="status" {{ old('status') == 1 ? 'selected' : '' }} id="inlineRadio1" value="1" />
+                                    <input class="form-check-input" type="radio" name="status" {{ $category->status == 1 ? 'checked' : '' }} id="inlineRadio1" value="1" />
                                     <label class="form-check-label" for="inlineRadio1">Active</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" {{ old('status') == 2 ? 'selected' : '' }} name="status" id="inlineRadio2" value="2" />
+                                    <input class="form-check-input" type="radio" {{ $category->status == 2 ? 'checked' : '' }} name="status" id="inlineRadio2" value="2" />
                                     <label class="form-check-label" for="inlineRadio2">Inactive</label>
                                 </div>
                             </div>

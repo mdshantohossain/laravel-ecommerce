@@ -23,3 +23,6 @@
 <script src="{{asset('/')}}website/assets/js/maind134.js?v=3.4"></script>
 <script src="{{asset('/')}}website/assets/js/shopd134.js?v=3.4"></script>
 
+{{--toastr cdn--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+

@@ -26,7 +26,7 @@ return new class extends Migration
             $table->text('shor_description');
             $table->longText('long_description');
             $table->text('image');
-            $table->string('slug');
+            $table->text('slug');
             $table->tinyInteger('status')->comment("status: 1=active, 2=inactive");
             $table->integer('click_count')->nullable();
             $table->integer('featured')->nullable();

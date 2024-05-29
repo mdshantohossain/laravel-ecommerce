@@ -35,10 +35,10 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('category.index') }}" key="t-p-grid">Category</a></li>
-                        <li><a href="projects-list.html" key="t-p-list">Sub category</a></li>
-                        <li><a href="projects-overview.html" key="t-p-overview">Brand</a></li>
-                        <li><a href="projects-create.html" key="t-create-new">Unit</a></li>
-                        <li><a href="projects-create.html" key="t-create-new">Product</a></li>
+                        <li><a href="{{ route('sub-category.index') }}" key="t-p-list">Sub category</a></li>
+                        <li><a href="{{ route('brand.index') }}" key="t-p-overview">Brand</a></li>
+                        <li><a href="{{ route('unit.index') }}" key="t-create-new">Unit</a></li>
+                        <li><a href="{{ route('product.index') }}" key="t-create-new">Product</a></li>
                     </ul>
                 </li>
 
