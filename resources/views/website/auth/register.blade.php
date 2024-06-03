@@ -36,7 +36,8 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" value="{{ old('username') }}" name="username" placeholder="Username" />
+                                                <input type="text" value="{{ old('username') }}" name="username" id="username" placeholder="Username" />
+                                                <span class="text-danger" id="usernameError"></span>
                                                 @error('username')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -48,13 +49,13 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" value="{{ old('password') }}" name="password" placeholder="Password" />
+                                                <input type="password" name="password" placeholder="Password" />
                                                 @error('password')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" value="{{ old('c_password') }}" name="c_password" placeholder="Confirm password" />
+                                                <input type="password" name="c_password" placeholder="Confirm password" />
                                                 @error('c_password')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror

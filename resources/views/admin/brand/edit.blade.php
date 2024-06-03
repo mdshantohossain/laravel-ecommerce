@@ -45,13 +45,12 @@
 
                             <div class="mb-3">
                                 <label class="d-block mb-3">Status :</label>
-
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status" {{ $brand->status == 1 ? 'checked' : '' }} id="inlineRadio1" value="1" />
                                     <label class="form-check-label" for="inlineRadio1">Active</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" {{ $brand->status == 2 ? 'checked' : '' }} name="status" id="inlineRadio2" value="2" />
+                                    <input class="form-check-input" type="radio" {{ $brand->status == 0 ? 'checked' : '' }} name="status" id="inlineRadio2" value="0" />
                                     <label class="form-check-label" for="inlineRadio2">Inactive</label>
                                 </div>
                             </div>

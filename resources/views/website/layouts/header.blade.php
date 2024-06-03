@@ -66,21 +66,15 @@
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
-                        <form action="#">
-                            <select class="select-active">
+                        <form action="{{ route('search.products') }}" method="GET">
+                            <select name="category_id" class="select-active">
                                 <option>All Categories</option>
                                 <option>Women's</option>
-                                <option>Men's</option>
-                                <option>Cellphones</option>
-                                <option>Computer</option>
-                                <option>Electronics</option>
-                                <option> Accessories</option>
-                                <option>Home & Garden</option>
-                                <option>Luggage</option>
-                                <option>Shoes</option>
-                                <option>Mother & Kids</option>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
                             </select>
-                            <input type="text" placeholder="Search for items...">
+                            <input type="text" name="search" placeholder="Search for items..." />
                         </form>
                     </div>
                     <div class="header-action-right">
@@ -89,13 +83,13 @@
                                 <a href="{{ route('wishlist') }}">
                                     <img class="svgInject" alt="Evara"
                                          src="{{asset('/')}}website/assets/imgs/theme/icons/icon-heart.svg">
-                                    <span class="pro-count blue">{{ count($wishlists) }}</span>
+                                    <span class="pro-count blue" id="wishlistCount">{{ count($wishlists) }}</span>
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="{{ route('cart') }}">
                                     <img alt="Evara" src="{{asset('/')}}website/assets/imgs/theme/icons/icon-cart.svg">
-                                    <span class="pro-count blue">{{ Cart::count() }}</span>
+                                    <span class="pro-count blue" id="cartCount">{{ count(Cart::content()) }}</span>
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
@@ -150,7 +144,7 @@
                             <ul>
                                 @foreach($categories as $category)
                                 <li class="has-children">
-                                    <a href="{{ route('category.product', $category->name) }}"><i class="evara-font-dress"></i>{{ $category->name }}</a>
+                                    <a href="{{ route('category.product', $category->slug) }}"><i class="evara-font-dress"></i>{{ $category->name }}</a>
                                     <div class="dropdown-menu">
                                         <ul class="mega-menu d-lg-flex">
                                             <li class="mega-menu-col col-lg-7">
@@ -160,7 +154,7 @@
                                                         <ul>
                                                             <li><span class="submenu-title">Hot & Trending</span></li>
                                                             @foreach($category->subCategories as $subCategory)
-                                                             <li><a class="dropdown-item nav-link nav_item" href="{{ route('sub-category.product', $subCategory->name) }}">{{ $subCategory->name }}</a>
+                                                             <li><a class="dropdown-item nav-link nav_item" href="{{ route('sub-category.product', $subCategory->slug) }}">{{ $subCategory->name }}</a>
                                                             @endforeach
                                                         </ul>
                                                     </li>
@@ -220,16 +214,13 @@
                                     <ul class="sub-menu">
                                         <li><a href="shop-grid-right.html">Profile</a></li>
                                         <li><a href="shop-grid-left.html">Dashboard</a></li>
-                                        <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
-                                        <li><a href="shop-cart.html">Shop – Cart</a></li>
-                                        <li><a href="shop-checkout.html">Shop – Checkout</a></li>
+                                        <li><a href="{{ route('wishlist') }}">Shop – Wishlist</a></li>
+                                        <li><a href="{{ route('cart') }}">Shop – Cart</a></li>
+                                        <li><a href="{{ route('checkout') }}">Shop – Checkout</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="javascript: void(0)">Blog <i class="fi-rs-angle-down"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-category-grid.html">Add Blog</a></li>
-                                        <li><a href="{{ route('blogs') }}">All Blogs</a></li>
-                                    </ul>
+                                <li><a href="javascript: void(0)">Blog</a>
+
                                 </li>
                                 <li>
                                     <a href="{{ route('contact') }}">Contact</a>

@@ -6,7 +6,7 @@ use App\Models\Category;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
-use View;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,9 +23,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::share([
-            'categories' => Category::where('status', 1)->get(),
-            'wishlists' => Wishlist::where('user_id', Auth::id())->get(),
-        ]);
+
+        View::composer('*', function ($view) {
+           $view->with([
+               'categories' => Category::where('status', 1)->get(),
+               'wishlists' => Wishlist::where('user_id', Auth::id())->get()
+           ]);
+        });
     }
 }

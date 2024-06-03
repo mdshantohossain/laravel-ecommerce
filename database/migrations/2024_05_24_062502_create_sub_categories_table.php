@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('image')->nullable();
             $table->text('slug');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->comment('1=active, 0=inactive');
             $table->timestamps();
         });
     }

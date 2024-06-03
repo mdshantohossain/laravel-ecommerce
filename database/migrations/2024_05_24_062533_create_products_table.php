@@ -23,11 +23,11 @@ return new class extends Migration
             $table->string('offer')->nullable();
             $table->integer('regular_price');
             $table->integer('selling_price')->nullable();
-            $table->text('shor_description');
+            $table->text('short_description');
             $table->longText('long_description');
             $table->text('image');
             $table->text('slug');
-            $table->tinyInteger('status')->comment("status: 1=active, 2=inactive");
+            $table->tinyInteger('status')->comment("status: 1=active, 0=inactive");
             $table->integer('click_count')->nullable();
             $table->integer('featured')->nullable();
             $table->timestamps();
