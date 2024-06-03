@@ -10,10 +10,9 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function categoryProduct($name)
+    public function categoryProduct($slug)
     {
-
-        $category = Category::where('name', $name)->first();
+        $category = Category::where('slug', $slug)->first();
         return view('website.product.index', [
             'products' => Product::where('category_id', $category->id)
                                  ->where('status', 1)->get(),
@@ -21,6 +20,16 @@ class ProductController extends Controller
                                  ->orderBy('id', 'DESC')
                                  ->take(3)
                                  ->get()
+        ]);
+    }
+
+    public function allProducts()
+    {
+        return view('website.product.all-products', [
+            'products' => Product::orderBy('id', 'DESC')->get(),
+            'newProducts' => Product::orderBy('id', 'DESC')
+                                    ->take(3)
+                                    ->get()
         ]);
     }
 

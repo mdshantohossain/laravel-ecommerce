@@ -1,6 +1,6 @@
 @extends('website.master')
 
-@section('title', 'Category product')
+@section('title', 'All product')
 
 @section('body')
     <main class="main">
@@ -39,15 +39,13 @@
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                         </div>
-                                        @if(!empty($product->offet))
-                                            <div class="product-badges product-badges-position product-badges-mrg">
-                                                <span class="hot">{{ $product->offet }}</span>
-                                            </div>
-                                        @endif
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            <span class="hot">Hot</span>
+                                        </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="{{ route('category.product', $product->category->slug) }}">{{ $product->category->name }}</a>
+                                            <a href="javascript: void(0)">{{ $product->category->name }}</a>
                                         </div>
                                         <h2><a href="{{ route('product.detail', $product->slug) }}">{{ substr($product->name, 0, 50) }}{{ strlen($product->name) > 50 ? '...' : '' }}</a></h2>
                                         <div class="rating-result" title="90%">
@@ -60,7 +58,7 @@
                                             <span class="old-price">${{ $product->regular_price }}</span>
                                         </div>
                                         <div class="product-action-1 show">
-                                            <button type="button" aria-label="Add To Cart" class="action-btn hover-up cardBtn"  data-id="{{ $product->id }}"><i class="fi-rs-shopping-bag-add"></i></button>
+                                            <button type="button" aria-label="Add To Cart" class="action-btn hover-up cardBtn" data-id="{{ $product->id }}"><i class="fi-rs-shopping-bag-add"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -142,17 +140,17 @@
                             </div>
                             @foreach($newProducts as $product)
                                 <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="{{asset($product->image)}}" width="80" height="80" alt="#" />
-                                </div>
-                                <div class="content pt-10">
-                                    <h5><a href="{{ route('product.detail', $product->slug) }}">{{ strlen($product->name) > 20 ? substr($product->name, 0, 20). '...' : $product->name }}</a></h5>
-                                    <p class="price mb-0 mt-5">{{ $product->selling_price }}</p>
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:90%"></div>
+                                    <div class="image">
+                                        <img src="{{asset($product->image)}}" width="80" height="80" alt="#" />
+                                    </div>
+                                    <div class="content pt-10">
+                                        <h5><a href="{{ route('product.detail', $product->slug) }}">{{ strlen($product->name) > 20 ? substr($product->name, 0, 20). '...' : $product->name }}</a></h5>
+                                        <p class="price mb-0 mt-5">{{ $product->selling_price }}</p>
+                                        <div class="product-rate">
+                                            <div class="product-rating" style="width:90%"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                         <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">

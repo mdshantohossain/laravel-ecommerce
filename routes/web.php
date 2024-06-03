@@ -2,12 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
+// website routes
 use App\Http\Controllers\website\EcommerceController;
 use App\Http\Controllers\Website\BlogController;
 use App\Http\Controllers\Website\CartController;
 use App\Http\Controllers\Website\CheckoutController;
 use App\Http\Controllers\Website\ProductController;
 use App\Http\Controllers\Website\WishlistController;
+use App\Http\Controllers\Website\SearchController;
+use App\Http\Controllers\Website\AjaxController;
 
 // admin routes
 use App\Http\Controllers\Admin\BrandController;
@@ -17,6 +20,7 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UnitController;
 use App\Http\Controllers\Admin\OrderController;
+
 
 // auth routes
 use App\Http\Controllers\Auth\SocialiteController;
@@ -32,8 +36,10 @@ Route::get('/privacy', [EcommerceController::class, 'privacy'])->name('privacy')
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
 
 
-Route::get('/category-product/{name}', [ProductController::class, 'categoryProduct'])->name('category.product');
+Route::get('/category-product/{slug}', [ProductController::class, 'categoryProduct'])->name('category.product');
+Route::get('/all-products', [ProductController::class, 'allProducts'])->name('all-products');
 Route::get('/sub-category-product/{name}', [ProductController::class, 'subCategoryProduct'])->name('sub-category.product');
+Route::get('/search-products', [SearchController::class, 'index'])->name('search.products');
 Route::get('/product-detail/{slug}', [ProductController::class, 'productDetail'])->name('product.detail');
 
 // product cart route
@@ -82,6 +88,14 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
     Route::resource('unit', UnitController::class);
     Route::resource('brand', BrandController::class);
     Route::resource('product', AdminProductController::class);
+
+
+
+    // ajax route
+
+Route::get('/cart-product-add-by-ajax', [AjaxController::class, 'cartProductAddByAjax'])->name('product.add-cart.by.ajax');
+Route::get('/product-add-wishlist-by-ajax', [AjaxController::class, 'wishlistAdd'])->name('wishlist-add.by.ajax');
+Route::get('/username-check-bia-ajax', [AjaxController::class, 'usernameCheck']);
 
 
 

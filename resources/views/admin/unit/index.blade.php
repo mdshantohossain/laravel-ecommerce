@@ -31,7 +31,7 @@
                                     <img src="{{ asset($unit->image) }}" height="70" width="90" alt="" />
                                 </td>
                                     <td>
-                                        <span class="badge {{ $unit->status == 1 ? 'badge-soft-success' : 'badge-soft-danger' }}">{{ $unit->status == 1 ? 'active' : 'inactive' }}</span>
+                                        <span class="badge {{ $unit->status == 1 ? 'badge-soft-success' : 'badge-soft-secondary' }}">{{ $unit->status == 1 ? 'active' : 'inactive' }}</span>
                                     </td>
                                 <td>
                                     <div class="d-flex">

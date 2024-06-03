@@ -27,5 +27,6 @@
 @include('website.layouts.footer-link')
 
 @stack('script')
+
 </body>
 </html>

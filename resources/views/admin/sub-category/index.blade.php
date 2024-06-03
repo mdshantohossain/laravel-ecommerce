@@ -33,7 +33,7 @@
                                         <img src="{{ asset($subCategory->image) }}" height="70" width="90" alt="" />
                                     </td>
                                         <td>
-                                            <span class="badge {{ $subCategory->status == 1 ? 'badge-soft-success' : 'badge-soft-danger' }}">{{ $subCategory->status == 1 ? 'active' : 'inactive' }}</span>
+                                            <span class="{{ $subCategory->status == 1 ? 'badge badge-soft-success' : 'badge badge-soft-secondary' }}">{{ $subCategory->status == 1 ? 'active' : 'inactive' }}</span>
                                         </td>
                                     <td>
                                         <div class="d-flex">
