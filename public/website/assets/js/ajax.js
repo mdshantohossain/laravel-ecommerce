@@ -8,9 +8,8 @@ for(let i = 0; i < length; i++){
             data: {id: $(this).data('id')},
             dataType: "JSON",
             success: function (res) {
-                if (res[0] === true) {
+                if (res[0] === 'success') {
                     $('#cartCount').text(res[2]);
-                    console.log(res[2])
                     toastr.success(res[1]);
                 }
             },
@@ -33,9 +32,9 @@ for (let i = 0; i< len; i++){
             success: function (res){
                 console.log(res)
                 if(res[0] === 'success') {
-                    $('#wishlistCount').text(res[2])
-                    toastr.success(res['1'])
-                } else if(res[0] === 'warning') {
+                    $('#wishlistCount').text(res[1])
+                    toastr.success(res[1])
+                } else {
                     toastr.warning(res[1])
                 }
             },
@@ -46,6 +45,24 @@ for (let i = 0; i< len; i++){
     }
 }
 
+document.addEventListener('DOMContentLoaded', function (){
+    $.ajax({
+        type: "GET",
+        url: '/get-cart-product',
+        success: function (res){
+            if (res[0] === 'success') {
+                res[1].map((product, index) => {
+                    console.log(product);
+                })
+            }
+        },
+        error: function (err){
+            console.log(err)
+        }
+    });
+});
+
+    // username check
 $('#username').keyup(function (){
     $.ajax({
         url: '/username-check-bia-ajax',

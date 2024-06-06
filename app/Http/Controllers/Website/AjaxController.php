@@ -26,9 +26,9 @@ class AjaxController extends Controller
 
             $count = count(Cart::content());
 
-            $res = [true, 'Cart product added successful', $count];
+            $res = ['success', 'Cart product added successful', $count];
         } else {
-            $res = [false, 'Product not added in cart'];
+            $res = ['danger', 'Product not added in cart'];
         }
 
         return response()->json($res);
@@ -66,6 +66,17 @@ class AjaxController extends Controller
             return response()->json([true, 'Those username already exist.']);
         } else {
             return response()->json([false, 'Username is avilable']);
+        }
+    }
+
+    public function getCartProduct()
+    {
+        $products = Cart::content();
+
+        if (!empty($products)) {
+            return response()->json(['success', $products]);
+        } else {
+            return response()->json(['empty']);
         }
     }
 }

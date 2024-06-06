@@ -44,3 +44,8 @@
 
 {{-- all ajax route is here--}}
 <script src="{{asset('/')}}website/assets/js/ajax.js"></script>
+<script>
+    $(()=> {
+
+    })
+</script>

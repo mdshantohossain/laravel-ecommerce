@@ -621,6 +621,10 @@ h4 {
   }
 }
 
+.user-icon{
+   font-size: 28px;
+}
+
 .jump {
   -webkit-transform-origin: 0;
           transform-origin: 0;
@@ -8491,7 +8495,7 @@ span.fi-rs-apps {
 }
 
 /***************************
-    Page section margin 
+    Page section margin
 ****************************/
 .mtb-0 {
   margin: 0;

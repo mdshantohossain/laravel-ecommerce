@@ -79,6 +79,13 @@
                     </div>
                     <div class="header-action-right">
                         <div class="header-action-2">
+                            @if(Auth::user())
+                              <div class="header-action-icon-2">
+                                <a href="{{ route('profile') }}">
+                                    <i class="fa-regular fa-user user-icon"></i>
+                                </a>
+                            </div>
+                            @endif
                             <div class="header-action-icon-2">
                                 <a href="{{ route('wishlist') }}">
                                     <img class="svgInject" alt="Evara"
