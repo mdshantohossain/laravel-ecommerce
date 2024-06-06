@@ -42,7 +42,7 @@
                                             <td class="image product-thumbnail"><img src="{{ asset($product->options->image) }}" height="100" width="120" alt="#"></td>
                                             <td class="product-des product-name">
                                                 <h5 class="product-name">
-                                                    <a href="shop-product-right.html">
+                                                    <a href="{{ route('product.detail', $product->id) }}">
                                                         {!! strlen($product->name) > 60 ? substr($product->name, 0, 60) . '<br>' . substr($product->name, 60) : $product->name !!}
                                                     </a>
                                                 </h5>

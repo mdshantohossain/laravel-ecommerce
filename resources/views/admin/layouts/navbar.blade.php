@@ -83,9 +83,9 @@
                         <span key="t-tasks">Order module</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="tasks-list.html" key="t-task-list">Task List</a></li>
-                        <li><a href="tasks-kanban.html" key="t-kanban-board">Kanban Board</a></li>
-                        <li><a href="tasks-create.html" key="t-create-task">Create Task</a></li>
+                        <li><a href="{{ route('all.orders') }}" key="t-task-list">All orders</a></li>
+                        <li><a href="tasks-kanban.html" key="t-kanban-board">Pending orders</a></li>
+                        <li><a href="tasks-create.html" key="t-create-task">Processing orders</a></li>
                     </ul>
                 </li>
 

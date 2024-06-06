@@ -16,13 +16,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->integer('phone')->unique()->nullable();
+            $table->text('phone')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role');
             $table->text('billing_address')->nullable();
             $table->text('shipping_address')->nullable();
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(0);
             $table->string('google_id')->nullable();
             $table->string('google_image')->nullable();
             $table->string('facebook_id')->nullable();
