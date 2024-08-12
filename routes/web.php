@@ -50,7 +50,6 @@ Route::get('/cart/remove-item/{id}', [CartController::class, 'remove'])->name('c
     // order place route
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/order-place', [OrderController::class, 'index'])->name('order.place');
-
     // auth route
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
